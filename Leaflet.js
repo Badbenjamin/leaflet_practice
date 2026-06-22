@@ -6,7 +6,7 @@ var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all
     maxZoom: 20
 }).addTo(map);
 
-let polygon1 = {
+let prospect_polygon = {
     "type": "FeatureCollection",
     "features": [
         {
@@ -240,4 +240,10 @@ let polygon1 = {
     ]
 }
 
-L.geoJson(polygon1).addTo(map)
+let myStyle = {
+    "color": "#8EF527",
+    "weight": 5,
+    "opacity": 0.65
+}
+
+L.geoJson(prospect_polygon, { style: myStyle }).addTo(map)
