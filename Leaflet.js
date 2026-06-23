@@ -271,12 +271,27 @@ let restroom_points = {
 }
 
 
-let myStyle = {
+let myPolyStyle = {
     "color": "#8EF527",
     "weight": 5,
     "opacity": 0.65
 }
 
-L.geoJson(prospect_polygon, { style: myStyle }).addTo(map)
+let myPointStyle = {
+    radius: 8,
+    fillColor: "#ff3de8",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+}
 
-L.geoJson(restroom_points).addTo(map)
+L.geoJson(prospect_polygon, { style: myPolyStyle }).addTo(map)
+
+// L.geoJson(restroom_points, { style: myPointStyle }).addTo(map)
+
+L.geoJSON(restroom_points, {
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, myPointStyle);
+    }
+}).addTo(map);
